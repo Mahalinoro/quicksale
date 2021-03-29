@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class ResetCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +18,35 @@ class Login extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(top: 250),
                   child: Text(
-                    'Welcome Back',
+                    'Forgot your password',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                         fontFamily: 'MartelSans'),
                   ),
-                )
+                ),
               ]),
+              Container(
+                  padding: EdgeInsets.only(top: 10, left: 25, right: 25),
+                  child: SizedBox(
+                    child: Text(
+                        "A notification email with a password reset code will then be sent to you within the next minutes",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: 'MartelSans',
+                          color: Colors.white,
+                        )),
+                  )),
+
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Container(
-                    padding: EdgeInsets.only(top: 230),
+                    padding: EdgeInsets.only(top: 190),
                     child: SizedBox(
                       width: 320,
-                      child: LoginForm(),
+                      child: ResetCodeForm(),
                     )),
               ]),
             ],
@@ -43,16 +57,16 @@ class Login extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatefulWidget {
+class ResetCodeForm extends StatefulWidget {
   @override
-  LoginFormState createState() {
-    return LoginFormState();
+  ResetCodeFormState createState() {
+    return ResetCodeFormState();
   }
 }
 
 // Create a corresponding State class.
 // This class holds data related to the form.
-class LoginFormState extends State<LoginForm> {
+class ResetCodeFormState extends State<ResetCodeForm> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -69,60 +83,35 @@ class LoginFormState extends State<LoginForm> {
                 fontWeight: FontWeight.w300,
                 fontFamily: 'MartelSans'),
             decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email_outlined, size: 22),
-                hintText: 'Email'),
-          ),
-          // The validator receives the text that the user has entered.
-
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: TextFormField(
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w300,
-                  fontFamily: 'MartelSans'),
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outlined, size: 22),
-                  suffixIcon: Icon(Icons.remove_red_eye_sharp, size: 22),
-                  hintText: 'Password'),
+              labelText: 'Reset Code',
+              labelStyle: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'MartelSans',
+            
+              )
             ),
           ),
-
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: Text(
-                'Forgot your password?',
-                style: TextStyle(
-                    color: Color(0xFF9BA9FF),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'MartelSans'),
-              ),
-            )
-          ]),
+          // The validator receives the text that the user has entered.
 
           Row(children: [
             Container(
               width: 320,
+              padding: EdgeInsets.only(top: 25),
               child: ElevatedButton(
-                  child: Text("Log in"),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
-                  ),
-                  onPressed: () {},
+                child: Text("Reset Password"),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
+                onPressed: () {},
               ),
+            ),
           ]),
-
-
-          
         ],
       ),
     );
   }
 }
-

@@ -1,12 +1,10 @@
+import 'package:Quicksale/views/profile_views_sceen/history.views.dart';
 import 'package:flutter/material.dart';
-import 'package:Quicksale/views/authentication_views_screen/login.views.dart';
+
 
 void main() {
-  runApp(
-    MaterialApp(
-      title: 'QuickSale',
-      home: Login(),
-    )
-  );
+  runApp(MaterialApp(
+    title: 'QuickSale',
+    home: History(),
+  ));
 }
-
