@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Quicksale/views/profile_views_sceen/drawer.views.dart';
 
 class Profile extends StatelessWidget {
+  static const String id = 'Profile';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

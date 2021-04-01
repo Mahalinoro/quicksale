@@ -1,8 +1,10 @@
+import 'package:Quicksale/views/shop_views_screen/payment.views.dart';
 import 'package:flutter/material.dart';
 
 enum PaymentType { cash, card }
 
 class Checkout extends StatelessWidget {
+  static const String id = 'Checkout';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,43 +13,43 @@ class Checkout extends StatelessWidget {
         title: Text('Checkout'),
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          Container(
-            height: 100.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/itemBack.png'),
-                  fit: BoxFit.cover),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              height: 100.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/itemBack.png'),
+                    fit: BoxFit.cover),
+              ),
             ),
-          ),
-          Center(
-              child: Container(
-                  width: 350,
-                  margin:
-                      EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 20),
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white54),
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white54),
-                  child: Column(children: [
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
+            Center(
+                child: Container(
+                    width: 350,
+                    margin: EdgeInsets.only(
+                        left: 20, right: 20, top: 50, bottom: 20),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white54),
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white54),
+                    child: Wrap(children: [
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
                             'Your Order',
                             style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'MartelSans'),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
+                          Text(
                             'View All',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -56,27 +58,25 @@ class Checkout extends StatelessWidget {
                                 fontWeight: FontWeight.w300,
                                 fontFamily: 'MartelSans'),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                '1x  Barely There Strappy Heels',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  '1x  Barely There Strappy Heels',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -84,22 +84,20 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                '1x  Barely There Strappy Heels',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  '1x  Barely There Strappy Heels',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -107,22 +105,20 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                '1x  Barely There Strappy Heels',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  '1x  Barely There Strappy Heels',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -130,22 +126,20 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                '1x  Barely There Strappy Heels',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  '1x  Barely There Strappy Heels',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -153,39 +147,45 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                'Total',
-                                style: TextStyle(
-                                    color: Color(0xFF9BA9FF),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(),
+                              SizedBox(
+                                width: 50,
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                'Total order amount',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                              SizedBox(
+                                child: Text(
+                                  'Total',
+                                  style: TextStyle(
+                                      color: Color(0xFF9BA9FF),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  'Total order amount',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -193,22 +193,20 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                'Delivery charge',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  'Delivery charge',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -216,22 +214,20 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w300,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              child: Text(
-                                'Total Amount',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'MartelSans'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  'Total Amount',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: 'MartelSans'),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Text(
+                              Text(
                                 '\$6.25',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
@@ -239,27 +235,27 @@ class Checkout extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     fontFamily: 'MartelSans'),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
                             'Your Address',
                             style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'MartelSans'),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
+                          SizedBox(
+                            width: 60,
+                          ),
+                          Text(
                             'Edit Address',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -268,68 +264,70 @@ class Checkout extends StatelessWidget {
                                 fontWeight: FontWeight.w300,
                                 fontFamily: 'MartelSans'),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          child: Text(
-                            'Street Name: 1150  Late Avenue, Kingfisher, Oklahoma',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'MartelSans'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            child: Text(
+                              'Street Name: 1150  Late Avenue, Kingfisher, Oklahoma',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'MartelSans'),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          child: Text(
-                            'Zip Code: 73750',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'MartelSans'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            child: Text(
+                              'Zip Code: 73750',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'MartelSans'),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          child: Text(
-                            'Contact: 580-770-8809',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'MartelSans'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            child: Text(
+                              'Contact: 580-770-8809',
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'MartelSans'),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          child: Text(
-                            'Payment Methods',
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'MartelSans'),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            child: Text(
+                              'Payment Methods',
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'MartelSans'),
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
+                          SizedBox(
+                            width: 60,
+                          ),
+                          Text(
                             'View All',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -338,12 +336,12 @@ class Checkout extends StatelessWidget {
                                 fontWeight: FontWeight.w300,
                                 fontFamily: 'MartelSans'),
                           ),
-                        ),
-                      ],
-                    ),
-                    Container(child: Expanded(child: MyStatefulWidget())),
-                  ])))
-        ],
+                        ],
+                      ),
+                      Container(child: MyStatefulWidget()),
+                    ])))
+          ],
+        ),
       ),
     );
   }
@@ -410,7 +408,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               padding: MaterialStateProperty.all<EdgeInsets>(
                   EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Payment.id);
+            },
           ),
         )
       ],

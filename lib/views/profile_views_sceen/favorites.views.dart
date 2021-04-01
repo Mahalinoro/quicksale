@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Favorites extends StatelessWidget {
+  static const String id = 'Favorites';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,9 +69,7 @@ class Favorites extends StatelessWidget {
                   ],
                 ),
               ),
-
               SizedBox(height: 15),
-
               Container(
                 width: 400,
                 height: 150,

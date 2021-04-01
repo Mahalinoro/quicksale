@@ -1,6 +1,8 @@
+import 'package:Quicksale/views/shop_views_screen/mycart.views.dart';
 import 'package:flutter/material.dart';
 
 class Item extends StatelessWidget {
+  static const String id = 'Item';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -82,16 +84,18 @@ class Item extends StatelessWidget {
                     SizedBox(
                       height: 5,
                     ),
-                    SizedBox(
-                      child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w300,
-                              fontFamily: 'MartelSans')),
+                    Expanded(
+                      child: SizedBox(
+                        child: Text(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'MartelSans')),
+                      ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
                     Container(
@@ -105,7 +109,9 @@ class Item extends StatelessWidget {
                               EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 12)),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyCart.id);
+                        },
                       ),
                     )
                   ],

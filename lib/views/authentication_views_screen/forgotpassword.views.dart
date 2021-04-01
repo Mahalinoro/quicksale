@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
+  // page id used for routing
+  static const String id = 'ForgotPassword';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,6 @@ class ForgotPassword extends StatelessWidget {
                           color: Colors.white,
                         )),
                   )),
-
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Container(
                     padding: EdgeInsets.only(top: 200),

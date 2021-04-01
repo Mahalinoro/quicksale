@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ManageSale extends StatelessWidget {
+  static const String id = 'ManageSale';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +14,9 @@ class ManageSale extends StatelessWidget {
               style: TextStyle(color: Colors.grey, fontFamily: 'MartelSans')),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFF9BA9FF),
-          onPressed: () {},
-          child: Icon(Icons.add)
-        ),
+            backgroundColor: Color(0xFF9BA9FF),
+            onPressed: () {},
+            child: Icon(Icons.add)),
         body: Container(
           margin: EdgeInsets.only(top: 20, right: 20, left: 20),
           child: Column(
@@ -65,36 +65,32 @@ class ManageSale extends StatelessWidget {
                               width: 60,
                               height: 30,
                               child: FlatButton(
-                                      padding: EdgeInsets.all(5),
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      color: Colors.red[400],
-                                      onPressed: () {},
-                                      child: Text('Remove',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10))),
+                                  padding: EdgeInsets.all(5),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(5.0),
+                                  ),
+                                  color: Colors.red[400],
+                                  onPressed: () {},
+                                  child: Text('Remove',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 10))),
                             ),
-
                             SizedBox(width: 10),
-
                             SizedBox(
                               width: 60,
                               height: 30,
                               child: FlatButton(
-                                      padding: EdgeInsets.all(5),
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      color: Colors.green[300],
-                                      onPressed: () {},
-                                      child: Text('Update',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10))),
+                                  padding: EdgeInsets.all(5),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(5.0),
+                                  ),
+                                  color: Colors.green[300],
+                                  onPressed: () {},
+                                  child: Text('Update',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 10))),
                             ),
                           ])
                         ],
@@ -103,9 +99,7 @@ class ManageSale extends StatelessWidget {
                   ],
                 ),
               ),
-
               SizedBox(height: 15),
-
               Container(
                 width: 400,
                 height: 150,
@@ -150,36 +144,32 @@ class ManageSale extends StatelessWidget {
                               width: 60,
                               height: 30,
                               child: FlatButton(
-                                      padding: EdgeInsets.all(5),
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      color: Colors.red[400],
-                                      onPressed: () {},
-                                      child: Text('Remove',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10))),
+                                  padding: EdgeInsets.all(5),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(5.0),
+                                  ),
+                                  color: Colors.red[400],
+                                  onPressed: () {},
+                                  child: Text('Remove',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 10))),
                             ),
-
                             SizedBox(width: 10),
-
                             SizedBox(
                               width: 60,
                               height: 30,
                               child: FlatButton(
-                                      padding: EdgeInsets.all(5),
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(5.0),
-                                      ),
-                                      color: Colors.green[300],
-                                      onPressed: () {},
-                                      child: Text('Update',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10))),
+                                  padding: EdgeInsets.all(5),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(5.0),
+                                  ),
+                                  color: Colors.green[300],
+                                  onPressed: () {},
+                                  child: Text('Update',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 10))),
                             ),
                           ])
                         ],
@@ -188,8 +178,6 @@ class ManageSale extends StatelessWidget {
                   ],
                 ),
               ),
-
-
             ],
           ),
         ),

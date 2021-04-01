@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PersonalInfo extends StatelessWidget {
+  static const String id = 'PersonalInfo';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

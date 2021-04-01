@@ -1,6 +1,8 @@
+import 'package:Quicksale/views/shop_views_screen/success.views.dart';
 import 'package:flutter/material.dart';
 
 class Payment extends StatelessWidget {
+  static const String id = 'Payment';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,160 +11,164 @@ class Payment extends StatelessWidget {
         title: Text('Payment Details'),
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          Container(
-            height: 100.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/itemBack.png'),
-                  fit: BoxFit.cover),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              height: 100.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/itemBack.png'),
+                    fit: BoxFit.cover),
+              ),
             ),
-          ),
-          Center(
-              child: Container(
-                  width: 350,
-                  margin:
-                      EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 20),
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white54),
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white54),
-                  child: Column(children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    SizedBox(
-                      child: Text('Confirm Order and Pay',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'MartelSans',
-                          )),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: Text('Payment Details',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'MartelSans',
-                                )))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: PaymentForm(),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
+            Center(
+                child: Container(
+                    width: 350,
+                    margin: EdgeInsets.only(
+                        left: 20, right: 20, top: 50, bottom: 20),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
                         border: Border.all(color: Colors.white54),
                         borderRadius: BorderRadius.circular(5),
-                        color: Color(0xFF9BA9FF),
+                        color: Colors.white54),
+                    child: Wrap(spacing: 8.0, children: [
+                      SizedBox(
+                        height: 8,
                       ),
-                      padding: EdgeInsets.all(20),
-                      child: Column(
+                      SizedBox(
+                        child: Text('Confirm Order and Pay',
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'MartelSans',
+                            )),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                child: Text('Total Amount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'MartelSans')),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                child: Text('\$6.25',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'MartelSans')),
-                              )
-                            ],
-                          ),
-                          Divider(
-                            thickness: 2.0,
-                            color: Colors.white,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                child: Text('Vendor Name',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'MartelSans')),
-                              ),
-                              Expanded(
-                                child: Text('Order ID',
-                                    textAlign: TextAlign.end,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'MartelSans')),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                child: Text('Jenifer Alan',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'MartelSans')),
-                              ),
-                              Expanded(
-                                child: Text('#152692',
-                                    textAlign: TextAlign.end,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'MartelSans')),
-                              )
-                            ],
-                          ),
+                          Expanded(
+                              child: Text('Payment Details',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'MartelSans',
+                                  )))
                         ],
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      width: 320,
-                      child: ElevatedButton(
-                        child: Text("Pay \$6.25"),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color(0xFF9BA9FF)),
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                              EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 12)),
-                        ),
-                        onPressed: () {},
+                      SizedBox(
+                        height: 10,
                       ),
-                    )
-                  ])))
-        ],
+                      Container(
+                        child: PaymentForm(),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white54),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xFF9BA9FF),
+                        ),
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  child: Text('Total Amount',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'MartelSans')),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  child: Text('\$6.25',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'MartelSans')),
+                                )
+                              ],
+                            ),
+                            Divider(
+                              thickness: 2.0,
+                              color: Colors.white,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  child: Text('Vendor Name',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'MartelSans')),
+                                ),
+                                Expanded(
+                                  child: Text('Order ID',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'MartelSans')),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  child: Text('Jenifer Alan',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'MartelSans')),
+                                ),
+                                Expanded(
+                                  child: Text('#152692',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'MartelSans')),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        width: 320,
+                        child: ElevatedButton(
+                          child: Text("Pay \$6.25"),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color(0xFF9BA9FF)),
+                            padding: MaterialStateProperty.all<EdgeInsets>(
+                                EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 12)),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, PaymentSuccess.id);
+                          },
+                        ),
+                      )
+                    ])))
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UploadItem extends StatelessWidget {
+  static const String id = 'UploadItem';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +35,15 @@ class UploadItem extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF9BA9FF)))),
-
                   ],
                 ),
               ),
-
               Container(
                 width: 300,
                 child: UploadItemForm(),
               )
             ],
           ),
-          
         ),
         bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: Color(0xFF9BA9FF),
@@ -187,7 +185,6 @@ class UploadItemFormState extends State<UploadItemForm> {
                   fontWeight: FontWeight.w300,
                   fontFamily: 'MartelSans'),
               decoration: InputDecoration(
-                
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 labelText: 'Description',
                 labelStyle: TextStyle(
@@ -196,8 +193,6 @@ class UploadItemFormState extends State<UploadItemForm> {
                     fontFamily: 'MartelSans'),
                 filled: true,
                 fillColor: Colors.grey[100],
-                
-                
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 focusedBorder: OutlineInputBorder(
@@ -230,4 +225,3 @@ class UploadItemFormState extends State<UploadItemForm> {
     );
   }
 }
-

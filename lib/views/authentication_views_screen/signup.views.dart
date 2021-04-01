@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
+  static const String id = 'SignUp';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +73,7 @@ class SignUpFormState extends State<SignUpForm> {
                 prefixIcon: Icon(Icons.person_outlined, size: 22),
                 hintText: 'Name'),
           ),
-          
+
           // The validator receives the text that the user has entered.
           Padding(
             padding: const EdgeInsets.only(top: 5),
@@ -105,16 +106,16 @@ class SignUpFormState extends State<SignUpForm> {
             Container(
               width: 320,
               child: ElevatedButton(
-                  child: Text("Sign Up"),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
-                  ),
-                  onPressed: () {},
+                child: Text("Sign Up"),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
+                onPressed: () {},
               ),
+            ),
           ]),
         ],
       ),

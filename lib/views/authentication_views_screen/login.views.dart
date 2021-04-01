@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
+  static const String id = 'Login';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,23 +107,19 @@ class LoginFormState extends State<LoginForm> {
             Container(
               width: 320,
               child: ElevatedButton(
-                  child: Text("Log in"),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
-                  ),
-                  onPressed: () {},
+                child: Text("Log in"),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
+                onPressed: () {},
               ),
+            ),
           ]),
-
-
-          
         ],
       ),
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
+  static const String id = 'CustomDrawer';
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -46,7 +47,6 @@ class CustomDrawer extends StatelessWidget {
             ),
             trailing: Icon(Icons.navigate_next, color: Colors.grey),
           ),
-
           ListTile(
             title: Text("Help & Feedback",
                 style: TextStyle(
@@ -57,8 +57,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Container(
               width: 50,
               child: FlatButton(
-                child:
-                    Icon(Icons.build_outlined, size: 20, color: Colors.grey),
+                child: Icon(Icons.build_outlined, size: 20, color: Colors.grey),
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0),
@@ -69,7 +68,6 @@ class CustomDrawer extends StatelessWidget {
             ),
             trailing: Icon(Icons.navigate_next, color: Colors.grey),
           ),
-
           ListTile(
             title: Text("Alerts & Notifications",
                 style: TextStyle(
@@ -80,8 +78,8 @@ class CustomDrawer extends StatelessWidget {
             leading: Container(
               width: 50,
               child: FlatButton(
-                child:
-                    Icon(Icons.notifications_outlined, size: 20, color: Colors.grey),
+                child: Icon(Icons.notifications_outlined,
+                    size: 20, color: Colors.grey),
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0),
@@ -92,7 +90,6 @@ class CustomDrawer extends StatelessWidget {
             ),
             trailing: Icon(Icons.navigate_next, color: Colors.grey),
           ),
-
           ListTile(
             title: Text("Logout",
                 style: TextStyle(
@@ -103,8 +100,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Container(
               width: 50,
               child: FlatButton(
-                child:
-                    Icon(Icons.logout, size: 20, color: Colors.grey),
+                child: Icon(Icons.logout, size: 20, color: Colors.grey),
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0),
@@ -115,7 +111,6 @@ class CustomDrawer extends StatelessWidget {
             ),
             trailing: Icon(Icons.navigate_next, color: Colors.grey),
           ),
-          
         ],
       ),
     );

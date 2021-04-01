@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResetCode extends StatelessWidget {
+  static const String id = 'ResetCode';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,6 @@ class ResetCode extends StatelessWidget {
                           color: Colors.white,
                         )),
                   )),
-
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Container(
                     padding: EdgeInsets.only(top: 190),
@@ -83,14 +83,12 @@ class ResetCodeFormState extends State<ResetCodeForm> {
                 fontWeight: FontWeight.w300,
                 fontFamily: 'MartelSans'),
             decoration: InputDecoration(
-              labelText: 'Reset Code',
-              labelStyle: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'MartelSans',
-            
-              )
-            ),
+                labelText: 'Reset Code',
+                labelStyle: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'MartelSans',
+                )),
           ),
           // The validator receives the text that the user has entered.
 

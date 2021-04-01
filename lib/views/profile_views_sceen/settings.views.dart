@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {
+  static const String id = 'Settings';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
