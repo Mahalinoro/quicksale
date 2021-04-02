@@ -1,3 +1,4 @@
+import 'package:Quicksale/views/shop_views_screen/discover.views.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -15,27 +16,32 @@ class Login extends StatelessWidget {
         Container(
           child: Column(
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Container(
-                  padding: EdgeInsets.only(top: 250),
-                  child: Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'MartelSans'),
-                  ),
-                )
-              ]),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Container(
-                    padding: EdgeInsets.only(top: 230),
-                    child: SizedBox(
-                      width: 320,
-                      child: LoginForm(),
-                    )),
-              ]),
+              Expanded(
+                child: Column(children: [
+                  Container(
+                    padding: EdgeInsets.only(top: 250),
+                    child: Text(
+                      'Welcome Back',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'MartelSans'),
+                    ),
+                  )
+                ]),
+              ),
+              Expanded(
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
+                      padding: EdgeInsets.only(top: 230),
+                      child: SizedBox(
+                        width: 320,
+                        child: LoginForm(),
+                      )),
+                ]),
+              ),
             ],
           ),
         )
@@ -62,62 +68,76 @@ class LoginFormState extends State<LoginForm> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          TextFormField(
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w300,
-                fontFamily: 'MartelSans'),
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email_outlined, size: 22),
-                hintText: 'Email'),
-          ),
-          // The validator receives the text that the user has entered.
-
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
+          Expanded(
             child: TextFormField(
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'MartelSans'),
               decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outlined, size: 22),
-                  suffixIcon: Icon(Icons.remove_red_eye_sharp, size: 22),
-                  hintText: 'Password'),
+                  prefixIcon: Icon(Icons.email_outlined, size: 22),
+                  hintText: 'Email'),
+            ),
+          ),
+          // The validator receives the text that the user has entered.
+
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: TextFormField(
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                    fontFamily: 'MartelSans'),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock_outlined, size: 22),
+                    suffixIcon: Icon(Icons.remove_red_eye_sharp, size: 22),
+                    hintText: 'Password'),
+              ),
             ),
           ),
 
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: Text(
-                'Forgot your password?',
-                style: TextStyle(
-                    color: Color(0xFF9BA9FF),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'MartelSans'),
-              ),
-            )
-          ]),
-
-          Row(children: [
-            Container(
-              width: 320,
-              child: ElevatedButton(
-                child: Text("Log in"),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
-                  padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
+          Expanded(
+            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Container(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+                child: Text(
+                  'Forgot your password?',
+                  style: TextStyle(
+                      color: Color(0xFF9BA9FF),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'MartelSans'),
                 ),
-                onPressed: () {},
-              ),
-            ),
-          ]),
+              )
+            ]),
+          ),
+
+          Expanded(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 320,
+                    child: ElevatedButton(
+                      child: Text("Log in"),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFF9BA9FF)),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, Discover.id);
+                      },
+                    ),
+                  ),
+                ]),
+          ),
         ],
       ),
     );

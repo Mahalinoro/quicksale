@@ -1,3 +1,4 @@
+import 'package:Quicksale/views/shop_views_screen/discover.views.dart';
 import 'package:flutter/material.dart';
 
 class ResetCode extends StatelessWidget {
@@ -104,7 +105,9 @@ class ResetCodeFormState extends State<ResetCodeForm> {
                   padding: MaterialStateProperty.all<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Discover.id);
+                },
               ),
             ),
           ]),

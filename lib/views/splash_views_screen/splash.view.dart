@@ -1,3 +1,4 @@
+import 'package:Quicksale/views/authentication_views_screen/index.views.dart';
 import 'package:Quicksale/views/onboarding_views_screen/onboarding.first.view.dart';
 import 'package:Quicksale/views/shop_views_screen/discover.views.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:Quicksale/views/authentication_views_screen/index.views.dart';
 import 'package:Quicksale/views/shop_views_screen/discover.views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -10,7 +11,7 @@ class OnboardingFourth extends StatelessWidget {
       home: Scaffold(
         body: GestureDetector(
           onHorizontalDragEnd: (DragEndDetails details) {
-            Navigator.pushNamed(context, Discover.id);
+            Navigator.pushNamed(context, GetStarted.id);
           },
           child: Stack(
             children: [

@@ -1,3 +1,5 @@
+import 'package:Quicksale/views/authentication_views_screen/login.views.dart';
+import 'package:Quicksale/views/authentication_views_screen/signup.views.dart';
 import 'package:flutter/material.dart';
 
 class GetStarted extends StatelessWidget {
@@ -50,7 +52,9 @@ class GetStarted extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontFamily: 'MartelSans'),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, Login.id);
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.white,
                         ),
@@ -73,7 +77,9 @@ class GetStarted extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontFamily: 'MartelSans'),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, SignUp.id);
+                        },
                         style: OutlinedButton.styleFrom(
                             side: BorderSide(
                           color: Colors.white,

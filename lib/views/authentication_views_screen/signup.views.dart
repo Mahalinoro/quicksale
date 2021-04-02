@@ -113,7 +113,9 @@ class SignUpFormState extends State<SignUpForm> {
                   padding: MaterialStateProperty.all<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, SignUp.id);
+                },
               ),
             ),
           ]),
