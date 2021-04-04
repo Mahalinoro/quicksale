@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "8526813382",
+    "project_id": "mobilegroupwork",
+    "storage_bucket": "mobilegroupwork.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8526813382:android:91d2a65fd24a83f99f5fc7",
+        "android_client_info": {
+          "package_name": "com.example.quicksale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8526813382-17qndagqe64scf11jrm5n949u583tt39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzy3Pni6OOsElAYqQu_Z-19d6xOv0mgxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8526813382-17qndagqe64scf11jrm5n949u583tt39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
