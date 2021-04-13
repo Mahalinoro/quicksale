@@ -1,319 +1,219 @@
+import 'dart:io';
+import 'package:Quicksale/views/onboarding_views_screen/onboarding.fourth.view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Quicksale/views/profile_views_sceen/drawer.views.dart';
+import 'package:image_picker/image_picker.dart';
 
-class Profile extends StatelessWidget {
-  static const String id = 'Profile';
+class CustomDrawer extends StatefulWidget {
+  static const String id = 'CustomDrawer';
+  @override
+  _CustomDrawerState createState() => _CustomDrawerState();
+}
+
+PickedFile _imageFile;
+final ImagePicker _picker = ImagePicker();
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  final _auth = FirebaseAuth.instance;
+  bool savedProfile = false;
+  String profilePicAddress;
+  String currentUser;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getcurrentUser();
+  }
+
+  void sayCheese(ImageSource source) async {
+    final pickedFile = await _picker.getImage(source: source);
+    setState(() {
+      _imageFile = pickedFile;
+    });
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: 100,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20.0,
+        vertical: 20.0,
+      ),
+      child: Column(children: <Widget>[
+        Text(
+          "Change Profile Picture",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.camera_alt),
+              onPressed: () {
+                sayCheese(ImageSource.camera);
+              },
+              label: Text("Camera"),
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.image),
+              onPressed: () {
+                sayCheese(ImageSource.gallery);
+              },
+              label: Text("Gallery"),
+            ),
+          ],
+        )
+      ]),
+    );
+  }
+
+  void getcurrentUser() {
+    try {
+      _auth.authStateChanges().listen((User user) {
+        if (user == null) {
+          //print(user);
+        } else {
+          print(user);
+          print(user.email);
+          setState(() {
+            currentUser = user.email;
+          });
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.grey),
-        elevation: 1,
-        actions: [
-          IconButton(
-              icon: Icon(Icons.shopping_cart_outlined), onPressed: () {}),
+    return Drawer(
+      child: ListView(
+        children: [
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/drawer.png'),
+                    fit: BoxFit.cover)),
+            accountName: Text("username"),
+            accountEmail: Text("$currentUser"),
+            currentAccountPicture: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: ((builder) => bottomSheet()),
+                );
+              },
+              child: ClipOval(
+                child: Image(
+                  image: savedProfile
+                      ? FileImage(File(profilePicAddress))
+                      : _imageFile == null
+                          ? AssetImage('assets/images/Profile.jpg')
+                          : FileImage(File(_imageFile.path)),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text("Settings",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'MartelSans')),
+            leading: Container(
+              width: 50,
+              child: FlatButton(
+                child:
+                    Icon(Icons.settings_outlined, size: 20, color: Colors.grey),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                ),
+                color: Colors.grey[100],
+                onPressed: () {},
+              ),
+            ),
+            trailing: Icon(Icons.navigate_next, color: Colors.grey),
+          ),
+          ListTile(
+            title: Text("Help & Feedback",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'MartelSans')),
+            leading: Container(
+              width: 50,
+              child: FlatButton(
+                child: Icon(Icons.build_outlined, size: 20, color: Colors.grey),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                ),
+                color: Colors.grey[100],
+                onPressed: () {},
+              ),
+            ),
+            trailing: Icon(Icons.navigate_next, color: Colors.grey),
+          ),
+          ListTile(
+            title: Text("Alerts & Notifications",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'MartelSans')),
+            leading: Container(
+              width: 50,
+              child: FlatButton(
+                child: Icon(Icons.notifications_outlined,
+                    size: 20, color: Colors.grey),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                ),
+                color: Colors.grey[100],
+                onPressed: () {},
+              ),
+            ),
+            trailing: Icon(Icons.navigate_next, color: Colors.grey),
+          ),
+          ListTile(
+            title: Text("Logout",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'MartelSans')),
+            leading: Container(
+              width: 50,
+              child: FlatButton(
+                child: Icon(Icons.logout, size: 20, color: Colors.grey),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(5.0),
+                ),
+                color: Colors.grey[100],
+                onPressed: () async {
+                  await _auth.signOut();
+                  Navigator.pushNamed(context, OnboardingFourth.id);
+                },
+              ),
+            ),
+            trailing: Icon(Icons.navigate_next, color: Colors.grey),
+          ),
         ],
       ),
-      drawer: CustomDrawer(),
-      body: Container(
-        margin: EdgeInsets.only(top: 20, right: 40, left: 40),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 70,
-                  child: Image(
-                    image: AssetImage('assets/images/profile-mini.png'),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        child: Text('Elena Josh',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'MartelSans')),
-                      ),
-                      SizedBox(
-                        child: Text('e.josh@gmail.com',
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontSize: 11,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'MartelSans')),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 10),
-            Divider(),
-            SizedBox(height: 10),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.person_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Personal Information'),
-                    ),
-                    const Icon(Icons.navigate_next,
-                        size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.bookmark_outline,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Order History'),
-                    ),
-                    const Icon(Icons.navigate_next,
-                        size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.shopping_cart_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Manage Sale'),
-                    ),
-                    const Icon(Icons.navigate_next,
-                        size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.favorite_border_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Favorites'),
-                    ),
-                    Icon(Icons.navigate_next, size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Divider(),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.settings_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Settings'),
-                    ),
-                    Icon(Icons.navigate_next, size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.build_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Help & Feedback'),
-                    ),
-                    Icon(Icons.navigate_next, size: 25.0, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      // flex: 1,
-                      child: Container(
-                        child: FlatButton(
-                          child: Icon(Icons.notifications_outlined,
-                              size: 25, color: Colors.grey),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.grey[100],
-                          onPressed: () {},
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Text('Alerts & Notifications'),
-                    ),
-                    Icon(Icons.navigate_next, size: 25.0, color: Colors.grey),
-                  ],
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Color(0xFF9BA9FF),
-          unselectedItemColor: Colors.black26,
-          showUnselectedLabels: true,
-          items: [
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.favorite_border_outlined),
-              label: 'Favorites',
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.shopping_cart_outlined),
-              label: 'My Cart',
-            ),
-            //  BottomNavigationBarItem(
-            //    icon: new Icon(Icons.message_outlined),
-            //    label: 'Message',
-            //  ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'Profile',
-            )
-          ]),
-    ));
+    );
   }
 }
