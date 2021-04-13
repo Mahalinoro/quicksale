@@ -22,9 +22,47 @@ import 'package:Quicksale/views/shop_views_screen/mycart.views.dart';
 import 'package:Quicksale/views/shop_views_screen/payment.views.dart';
 import 'package:Quicksale/views/shop_views_screen/success.views.dart';
 import 'package:Quicksale/views/splash_views_screen/splash.view.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
-void main() {
+FlutterLocalNotificationsPlugin localNotification;
+//  function to display Notification
+
+Future<void> _zonedScheduleNotification() async {
+  tz.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation("Africa/Kigali"));
+  await localNotification.zonedSchedule(
+      0,
+      'Welcome to quickSale',
+      'Thanks for downloading quicksale App',
+      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      const NotificationDetails(
+          android: AndroidNotificationDetails(
+              'quickSale', 'Welcome notification', 'Welcome to quickSale')),
+      androidAllowWhileIdle: true,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime);
+}
+
+void main() async {
+  // firebase set-up
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  //  local notification set-up
+
+  var andriodInitialize = AndroidInitializationSettings('ic_launcher');
+  var initializationSettingsIOS = IOSInitializationSettings();
+  final InitializationSettings initializationSettings = InitializationSettings(
+      android: andriodInitialize, iOS: initializationSettingsIOS);
+  localNotification = new FlutterLocalNotificationsPlugin();
+  localNotification.initialize(initializationSettings);
+  _zonedScheduleNotification();
+
   runApp(MaterialApp(
     title: 'QuickSale',
     initialRoute: Home.id,
