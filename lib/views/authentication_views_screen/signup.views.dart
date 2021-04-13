@@ -1,7 +1,11 @@
+import 'package:Quicksale/views/shop_views_screen/discover.views.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUp extends StatelessWidget {
   static const String id = 'SignUp';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +18,8 @@ class SignUp extends StatelessWidget {
         ),
         Container(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Container(
@@ -28,17 +34,25 @@ class SignUp extends StatelessWidget {
                   ),
                 )
               ]),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          right: 14,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Container(
-                    padding: EdgeInsets.only(top: 230),
+                    padding: EdgeInsets.only(top: 160),
+                    // decoration: BoxDecoration(color: Colors.black),
                     child: SizedBox(
                       width: 320,
                       child: SignUpForm(),
                     )),
               ]),
-            ],
-          ),
-        )
+        ),
       ],
     ));
   }
@@ -55,6 +69,10 @@ class SignUpForm extends StatefulWidget {
 // This class holds data related to the form.
 class SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+  String email;
+  String password;
+  String name;
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +82,11 @@ class SignUpFormState extends State<SignUpForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextFormField(
+          TextField(
+            keyboardType: TextInputType.name,
+            onChanged: (value) {
+              name = value;
+            },
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w300,
@@ -77,7 +99,11 @@ class SignUpFormState extends State<SignUpForm> {
           // The validator receives the text that the user has entered.
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: TextFormField(
+            child: TextField(
+              keyboardType: TextInputType.emailAddress,
+              onChanged: (value) {
+                email = value;
+              },
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w300,
@@ -90,7 +116,12 @@ class SignUpFormState extends State<SignUpForm> {
 
           Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 10),
-            child: TextFormField(
+            child: TextField(
+              obscureText: true,
+              keyboardType: TextInputType.visiblePassword,
+              onChanged: (value) {
+                password = value;
+              },
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w300,
@@ -113,8 +144,16 @@ class SignUpFormState extends State<SignUpForm> {
                   padding: MaterialStateProperty.all<EdgeInsets>(
                       EdgeInsets.symmetric(horizontal: 12, vertical: 12)),
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, SignUp.id);
+                onPressed: () async {
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, Discover.id);
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
                 },
               ),
             ),
